@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:banner_view/banner_view.dart';
 import 'package:wanandroid_flutter_app/http/commonService.dart';
+import 'package:wanandroid_flutter_app/page/webViewPage.dart';
 import 'package:wanandroid_flutter_app/widget/articleItem.dart';
 
 class ArticlePage extends StatefulWidget {
@@ -79,11 +80,23 @@ class _ArticlePageState extends State<ArticlePage> {
 
   Widget _bannerView() {
     List<Widget> list = banners.map((item) {
-      return Image.network(
-        item['imagePath'],
-        fit: BoxFit.cover,
+//      return Image.network(
+//        item['imagePath'],
+//        fit: BoxFit.cover,
+//      );
+      return InkWell(
+        child: Image.network(
+          item['imagePath'],
+          fit: BoxFit.cover,
+        ),
+        onTap: () {
+          Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+            return WebViewPage(item);
+          }));
+        },
       );
     }).toList();
+
     return list.isNotEmpty
         ? BannerView(list, intervalDuration: const Duration(seconds: 3))
         : null;

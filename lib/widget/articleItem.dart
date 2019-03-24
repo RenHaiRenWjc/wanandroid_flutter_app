@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wanandroid_flutter_app/page/webViewPage.dart';
 
 class ArticleItem extends StatelessWidget {
   final itemDate;
@@ -53,7 +54,15 @@ class ArticleItem extends StatelessWidget {
     );
     return new Card(
       elevation: 4.0,
-      child: column,
+      child: InkWell(
+        child: column,
+        onTap: () {
+          Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+            itemDate['url'] = itemDate['link'];
+            return WebViewPage(itemDate);
+          }));
+        },
+      ),
     );
   }
 }
