@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter_app/page/articlePage.dart';
+import 'package:wanandroid_flutter_app/widget/mainDrawer.dart';
 
 void main() => runApp(new ArticleApp());
 
@@ -14,7 +15,10 @@ class ArticleApp extends StatelessWidget {
             style: const TextStyle(color: Colors.white),
           ),
         ),
-        body: new ArticlePage(),
+        body: ArticlePage(),
+        drawer: Drawer(
+          child: MainDrawer(),
+        ),
       ),
     );
   }
