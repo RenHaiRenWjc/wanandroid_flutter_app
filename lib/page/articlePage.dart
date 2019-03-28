@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:banner_view/banner_view.dart';
-import 'package:wanandroid_flutter_app/http/commonService.dart';
+import 'package:wanandroid_flutter_app/http/api.dart';
 import 'package:wanandroid_flutter_app/page/webViewPage.dart';
 import 'package:wanandroid_flutter_app/widget/articleItem.dart';
 
@@ -112,7 +112,7 @@ class _ArticlePageState extends State<ArticlePage> {
   }
 
   _getArticleList([bool update = true]) async {
-    var data = await CommonService.getInstance().getArticleList(curPage);
+    var data = await Api.getArticleList(curPage);
     if (data != null) {
       var map = data['data'];
       var articleList = map['datas'];
@@ -129,7 +129,7 @@ class _ArticlePageState extends State<ArticlePage> {
   }
 
   _getBanner([bool update = true]) async {
-    var data = await CommonService.getInstance().getBanner();
+    var data = await Api.getBanner();
     if (data != null) {
       banners.clear();
       banners.addAll(data['data']);

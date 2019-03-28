@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wanandroid_flutter_app/Utils/appManager.dart';
 import 'package:wanandroid_flutter_app/page/articlePage.dart';
 import 'package:wanandroid_flutter_app/widget/mainDrawer.dart';
 
@@ -7,6 +8,7 @@ void main() => runApp(new ArticleApp());
 class ArticleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AppManager.initApp();
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
